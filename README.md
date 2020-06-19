@@ -7,7 +7,13 @@
 Express + Parse Server
 ParseDashboard
 
-초기 데이터 입력
+#### 초기 데이터 입력
+
+- title : String
+- driector : String
+- year: Number
+
+![Screenshot](https://github.com/wannabewize/ParseAndReactNative/blob/master/Docs/01.dashboard-initial-data.png?raw=true)
 
 ### Client
 
