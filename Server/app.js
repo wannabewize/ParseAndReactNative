@@ -27,7 +27,9 @@ const dashboard = new ParseDashBoard({
             masterKey: config.masterKey,      
             serverURL: config.parseServerUrl
         },
-    ]}, { allowInsecureHTTP: true});
+    ],
+    users: [{user:'user', pass:'1234'}]
+    }, {allowInsecureHTTP: true});
 
 app.use('/dashboard', dashboard);
 
