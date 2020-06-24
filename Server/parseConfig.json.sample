@@ -1,0 +1,8 @@
+{
+    "appId": "example",
+    "masterKey": "parse_masterKey",
+    "javascriptKey": "parse_jsKey",
+    "databaseUri": "mongodb://127.0.0.1/parse_example",
+    "parseServerUrl": "http://localhost:3000/parse",
+    "appName": "MyApp"
+}

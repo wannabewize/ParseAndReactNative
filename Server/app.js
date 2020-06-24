@@ -2,33 +2,32 @@ const express = require('express');
 const {ParseServer} = require('parse-server');
 const ParseDashBoard = require('parse-dashboard');
 
+const fs = require('fs');
+const configFile = fs.readFileSync('./parseConfig.json', 'utf-8');
+const config = JSON.parse(configFile);
+console.log('config :', config);
+
 const app = express();
 
-
-const AppId = 'parse-rn-example';
-const MasterKey = 'parse-rn-masterKey';
-const JavascriptKey = 'parse-rn-jsKey';
-const DatabaseUri = 'mongodb://127.0.0.1/parse-rn'
-
 const parserServer = new ParseServer({
-    databaseURI: DatabaseUri,
-    appId: AppId,
-    masterKey: MasterKey,
-    javascriptKey: JavascriptKey,
+    appId: config.appId,
+    databaseURI: config.databaseUri,
+    masterKey: config.masterKey,
+    javascriptKey: config.javascriptKey,
     port: 3000,
 });
 
 app.use('/parse', parserServer);
 
-const dashboard = new ParseDashBoard({apps: [
-    {
-        serverURL: 'http://localhost:3000/parse',
-        appId: AppId,
-        masterKey: MasterKey,
-        appName: 'Parse-ReactNative-Example'
-
-    }
-]});
+const dashboard = new ParseDashBoard({
+    apps: [
+        {
+            appId: config.appId,
+            appName: config.appName,
+            masterKey: config.masterKey,      
+            serverURL: config.parseServerUrl
+        },
+    ]});
 
 app.use('/dashboard', dashboard);
 
