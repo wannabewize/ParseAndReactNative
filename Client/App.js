@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, SafeAreaView,  FlatList, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Modal, FlatList, Text, View } from 'react-native';
+import {MovieCompose} from "./MovieCompose";
 import { AsyncStorage } from 'react-native';
 import Parse from 'parse/react-native';
 
@@ -12,7 +13,8 @@ Parse.serverURL = 'http://172.30.1.77:3000/parse'
 
 export default function App() {
 
-    const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState([]);
+    const [composerVisible, setComposerVisible] = useState(false);
 
     resolveMovies = async () => {
         try {
@@ -31,6 +33,10 @@ export default function App() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Modal
+                visible={composerVisible}>
+                <MovieCompose />
+            </Modal>
             <Text style={styles.head}>Parse and ReactNative Example</Text>
             <FlatList
                 style={{flex:1}}
