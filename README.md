@@ -26,3 +26,7 @@ React-Native 앱 초기화
 Parse Init
 
 Parse Server 에서 초기 데이터 읽기
+
+## Step2
+
+데이터 입력
